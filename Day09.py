@@ -78,7 +78,7 @@ def risk_level(rl):
 
 def find_lowests():
     for i in range(1, rows+1):
-        print(height_map[i])
+        #print(height_map[i])
         for j in range(1, cols+1):
             cur = height_map[i][j]
             if(cur < height_map[i-1][j]) and (cur < height_map[i+1][j]) and (cur < height_map[i][j-1]) and (cur < height_map[i][j+1]):
