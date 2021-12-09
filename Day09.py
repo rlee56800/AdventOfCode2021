@@ -11,11 +11,11 @@ nearby caves for you (your puzzle input).
 Smoke flows to the lowest point of the area it's in. For example, consider the
 following heightmap:
 
-2199943210
+2*1*9994321*0*
 3987894921
-9856789892
+98*5*6789892
 8767896789
-9899965678
+989996*5*678
 
 Each number corresponds to the height of a particular location, where 9 is the
 highest and 0 is the lowest a location can be.
@@ -38,3 +38,32 @@ Find all of the low points on your heightmap. What is the sum of the risk levels
 all low points on your heightmap?
 
 '''
+
+def risk_level(heights):
+    risk_lev = sum(heights)
+    risk_lev += len(heights)
+    return risk_lev
+
+height_map = []
+
+# saves input as array (sorry john python)
+with open('Day09_Input.txt', 'r') as f:
+    for line in f.readlines():
+        hm = []
+        stripped = line.strip() # gets rid of newline
+        for ch in stripped:
+            c = ord(ch) - 48 # casts char to ASCII int; removes ASCII part
+            hm.append(c)
+        hm.insert(0, 9)
+        hm.insert(len(hm), 9) # adds 9 (highest value) to edges
+        height_map.append(hm)
+
+# adds row of 9s to top and bottom
+# (wall of 9s around actual array because arr[-1] does something)
+hm = []
+for i in range(len(height_map[0]) + 2):
+    hm.append(9)
+height_map.insert(0, hm)
+height_map.insert(len(height_map), hm)
+
+print(height_map)
