@@ -39,11 +39,7 @@ all low points on your heightmap?
 
 '''
 
-def risk_level(heights):
-    risk_lev = sum(heights)
-    risk_lev += len(heights)
-    return risk_lev
-
+# Variable definitions and such
 height_map = []
 
 # saves input as array (sorry john python)
@@ -66,4 +62,30 @@ for i in range(len(height_map[0]) + 2):
 height_map.insert(0, hm)
 height_map.insert(len(height_map), hm)
 
-print(height_map)
+#print(height_map)
+
+rows = len(height_map) - 2 # amt rows
+cols = len(height_map[1]) - 2 # amt cols
+lowest = [] # list of lowest heights
+
+
+##################################################################################
+# function definitions
+def risk_level(rl):
+    risk_lev = sum(rl)
+    risk_lev += len(rl)
+    return risk_lev
+
+def find_lowests():
+    for i in range(1, rows+1):
+        print(height_map[i])
+        for j in range(1, cols+1):
+            cur = height_map[i][j]
+            if(cur < height_map[i-1][j]) and (cur < height_map[i+1][j]) and (cur < height_map[i][j-1]) and (cur < height_map[i][j+1]):
+                lowest.append(cur)
+
+
+##################################################################################
+# call functions
+find_lowests()
+print(risk_level(lowest))
