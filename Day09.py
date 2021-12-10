@@ -38,9 +38,11 @@ Find all of the low points on your heightmap. What is the sum of the risk levels
 all low points on your heightmap?
 
 '''
-
+##################################################################################
 # Variable definitions and such
-height_map = []
+height_map = [] # matrix of all values in height map
+x = [] # row of low point
+y = [] # col of low point
 
 # saves input as array (sorry john python)
 with open('Day09_Input.txt', 'r') as f:
@@ -72,17 +74,21 @@ lowest = [] # list of lowest heights
 ##################################################################################
 # function definitions
 def risk_level(rl):
+    # calculates risk levels
     risk_lev = sum(rl)
     risk_lev += len(rl)
     return risk_lev
 
 def find_lowests():
+    # finds lowest values (brute force)
     for i in range(1, rows+1):
         #print(height_map[i])
         for j in range(1, cols+1):
             cur = height_map[i][j]
             if(cur < height_map[i-1][j]) and (cur < height_map[i+1][j]) and (cur < height_map[i][j-1]) and (cur < height_map[i][j+1]):
                 lowest.append(cur)
+                x.append(i)
+                y.append(j)
 
 
 ##################################################################################
@@ -135,3 +141,46 @@ Find the three largest basins and multiply their sizes together. In the above ex
 
 What do you get if you multiply together the sizes of the three largest basins?
 '''
+##################################################################################
+# variable definitions and such
+basins = [] # list of all basin totals
+searched = [] # T/F; whether a square was added
+
+##################################################################################
+# fuction definitions
+def fill_false():
+    # resets "searched" matrix
+    searched = []
+    s = []
+    for j in range(len(height_map[0])):
+        s.append(False)
+    for i in range(len(height_map)):
+        searched.append(s)
+
+def search(i, j):
+    if height_map[i][j] == 9:
+        return 0
+    else:
+        sum = 1
+        if searched[i+1][j]:
+            sum += search(i+1, j)
+        if searched[i-1][j]:
+            sum += search(i-1, j)
+        if searched[i][j+1]:
+            sum += search(i, j+1)
+        if searched[i][j-1]:
+            sum += search(i, j-1)
+    return sum
+
+def check_four(i, j):
+    return search(i+1, j) + search(i-1, j) + search(i, j+1) + search(i, j-1)
+
+##################################################################################
+# call functions
+fill_false()
+
+for i in range(len(x)):
+    basins.append(check_four(x[i], y[i]))
+
+basins.sort(reverse = True)
+print(basins[0] * basins[1] * basins[2])
