@@ -37,7 +37,6 @@ After following these instructions, you would have a horizontal position of 15 a
 Calculate the horizontal position and depth you would have after following the planned course. What do 
 you get if you multiply your final horizontal position by your final depth?
 '''
-import re
 
 def part1():
     forward = 0
@@ -61,7 +60,7 @@ def part1():
 
     print(forward * depth)
 
-#part1()
+part1()
 # Solution: 1427868
 
 
@@ -104,6 +103,27 @@ position by your final depth?
 '''
 
 def part2():
-    print()
+    forward = 0
+    depth = 0
+    aim = 0
+
+    with open('Day02_Input.txt') as f:
+        for line in f: # read rest of lines
+            if 'forward' in line:
+                for x in line.split():
+                    if x.isdigit():
+                        forward += int(x)
+                        depth += int(x) * aim
+            elif 'down' in line:
+                for x in line.split():
+                    if x.isdigit():
+                        aim += int(x)
+            elif 'up' in line:
+                for x in line.split():
+                    if x.isdigit():
+                        aim -= int(x)
+
+    print(forward * depth)
 
 part2()
+# Solution: 1568138742

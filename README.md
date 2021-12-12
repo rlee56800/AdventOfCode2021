@@ -5,6 +5,6 @@ Status of Challenges:
 | Day #  | Part 1 Status      | Part 2 Status      |
 | ------ | ------------------ | ------------------ |
 | 01     | Finished           | Finished           |
-| 02     | Finished           | Started            |
+| 02     | Finished           | Finished           |
 | 09     | Finished           | Incomplete (error) |
 | 12     | Written :)         |                    |
