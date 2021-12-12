@@ -6,6 +6,6 @@ Status of Challenges:
 | ------ | ------------------ | ------------------ |
 | 01     | Finished           | Finished           |
 | 02     | Finished           | Finished           |
-| 03     | Started            |                    |
+| 03     | Finished           |                    |
 | 09     | Finished           | Incomplete (error) |
 | 12     | Written :)         |                    |

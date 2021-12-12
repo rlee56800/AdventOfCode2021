@@ -47,10 +47,35 @@ Use the binary numbers in your diagnostic report to calculate the gamma rate and
 multiply them together. What is the power consumption of the submarine? (Be sure to represent your answer 
 in decimal, not binary.)
 '''
+length = 12 # remember to change this
+occurrence_0 = [0] * length
 
 def part_1():
+    values = 0
     with open('Day03_Input.txt') as f:
-        for line in f: # read rest of lines
-            print()
+        for line in f:
+            values += 1
+            for j in range(length):
+                #print(type(j + 1))
+                if line[j:j+1] == '0':
+                    occurrence_0[j] += 1
 
-print()
+    #print(occurrence_0)    
+    curVal = 2**(length-1)
+    gammaRate = 0
+    for i in range(length):
+        #print(curVal)
+        if(occurrence_0[i] < values - occurrence_0[i]):
+            #print(1)
+            gammaRate += curVal
+        #else:
+        #    print(0)
+        curVal = curVal//2
+    epsilonRate = ((2**(length)) - 1) - gammaRate
+
+    #print("gamma:" + str(gammaRate))
+    #print("epsilon:" + str(epsilonRate))
+    print(gammaRate * epsilonRate)
+
+part_1()
+# Solution: 1997414
