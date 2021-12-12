@@ -65,19 +65,21 @@ In this example, there are 7 measurements that are larger than the previous meas
 How many measurements are larger than the previous measurement?
 '''
 
-#amtIncreasing = 0
+amtIncreasing = 0
 
-#with open('Day01_Input.txt') as f:
-#    prev = int(next(f)) 
-#    for i in range(amtInputs - 1): # SORRY NOT SCALABLE
-#        #print(i)
-#        #print(amtIncreasing)
-#        current = int(next(f))
-#        if prev < current:
-#            amtIncreasing += 1
-#        prev = current
+with open('Day01_Input.txt') as f:
+    prev = int(next(f)) 
+    for i in range(amtInputs - 1): # SORRY NOT SCALABLE
+        #print(i)
+        #print(amtIncreasing)
+        current = int(next(f))
+        if prev < current:
+            amtIncreasing += 1
+        prev = current
 
-#print(amtIncreasing)
+print(amtIncreasing)
+# Solution: 1529
+
 
 '''
 --- Part Two ---
@@ -139,3 +141,4 @@ with open('Day01_Input.txt') as f:
         two = three
 
 print(amtIncreasing2)
+# Solution: 1567
