@@ -95,6 +95,8 @@ def find_lowests():
 # call functions
 find_lowests()
 print(risk_level(lowest))
+print(x)
+print(y)
 
 '''
 --- Part Two ---
