@@ -77,7 +77,7 @@ def part_1():
     #print("epsilon:" + str(epsilonRate))
     print(gammaRate * epsilonRate)
 
-part_1()
+#part_1()
 # Solution: 1997414
 
 '''
@@ -140,3 +140,40 @@ scrubber rating, then multiply them together. What is the life support rating of
 to represent your answer in decimal, not binary.)
 
 '''
+
+#def findValue(curBit, arr, check):
+def findValue(curBit, arr):
+    if len(arr) == 1:
+        return arr[0]
+
+    zeroArr = []
+    oneArr = []
+    for i in range(len(arr)):
+        if arr[i][slice(curBit, curBit + 1)] == 0:
+            zeroArr.append(arr[i])
+        else:
+            oneArr.append(arr[i])
+    '''
+    if(check(len(zeroArr), len(oneArr))):
+        findValue(curBit+1, zeroArr, check)
+    else:
+        findValue(curBit+1, oneArr, check)'''
+    if(len(zeroArr) > len(oneArr)):
+        findValue(curBit+1, zeroArr)
+    else:
+        findValue(curBit+1, oneArr)
+
+nums = []
+def part_2():
+    values = 0
+    with open('Day03_Input.txt') as f:
+        for line in f:
+            nums.append(line.strip())
+            #values += 1
+            #for j in range(length):
+                #print(type(j + 1))
+                #if line[j:j+1] == '0':
+                #    occurrence_0[j] += 1
+
+part_2()
+print(findValue(0, nums))
