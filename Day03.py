@@ -141,27 +141,27 @@ to represent your answer in decimal, not binary.)
 
 '''
 
-def findValue(curBit, arr, check):
-#def findValue(curBit, arr, check):
+def find_value(cur_bit, arr, check):
+#def find_value(cur_bit, arr, check):
     if len(arr) == 1:
         return arr[0]
 
-    zeroArr = []
-    oneArr = []
+    zero_arr = []
+    one_arr = []
     for i in range(len(arr)):
-        if arr[i][slice(curBit, curBit + 1)] == 0:
-            zeroArr.append(arr[i])
+        if arr[i][slice(cur_bit, cur_bit + 1)] == 0:
+            zero_arr.append(arr[i])
         else:
-            oneArr.append(arr[i])
+            one_arr.append(arr[i])
     
-    if(check(len(zeroArr), len(oneArr))):
-        findValue(curBit+1, zeroArr, check)
+    if(check(len(zero_arr), len(one_arr))):
+        find_value(cur_bit+1, zero_arr, check)
     else:
-        findValue(curBit+1, oneArr, check)
-    '''if(len(zeroArr) > len(oneArr)):
-        findValue(curBit+1, zeroArr)
+        find_value(cur_bit+1, one_arr, check)
+    '''if(len(zero_arr) > len(one_arr)):
+        find_value(cur_bit+1, zero_arr)
     else:
-        findValue(curBit+1, oneArr)'''
+        find_value(cur_bit+1, one_arr)'''
 
 nums = []
 def part_2():
@@ -176,5 +176,6 @@ def part_2():
                 #    occurrence_0[j] += 1
 
 part_2()
-oxygen_generator_rating = findValue(0, nums, lambda x, y: x > y)
+oxygen_generator_rating = find_value(0, nums, lambda x, y: x > y)
+co2_scrubber_rating = find_value(0, nums, lambda x, y: x < y)
 print()
