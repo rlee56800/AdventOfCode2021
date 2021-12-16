@@ -141,8 +141,8 @@ to represent your answer in decimal, not binary.)
 
 '''
 
+def findValue(curBit, arr, check):
 #def findValue(curBit, arr, check):
-def findValue(curBit, arr):
     if len(arr) == 1:
         return arr[0]
 
@@ -153,15 +153,15 @@ def findValue(curBit, arr):
             zeroArr.append(arr[i])
         else:
             oneArr.append(arr[i])
-    '''
+    
     if(check(len(zeroArr), len(oneArr))):
         findValue(curBit+1, zeroArr, check)
     else:
-        findValue(curBit+1, oneArr, check)'''
-    if(len(zeroArr) > len(oneArr)):
+        findValue(curBit+1, oneArr, check)
+    '''if(len(zeroArr) > len(oneArr)):
         findValue(curBit+1, zeroArr)
     else:
-        findValue(curBit+1, oneArr)
+        findValue(curBit+1, oneArr)'''
 
 nums = []
 def part_2():
@@ -176,4 +176,5 @@ def part_2():
                 #    occurrence_0[j] += 1
 
 part_2()
-print(findValue(0, nums))
+oxygen_generator_rating = findValue(0, nums, lambda x, y: x > y)
+print()
